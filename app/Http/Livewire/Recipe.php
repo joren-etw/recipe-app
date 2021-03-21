@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Components;
+namespace App\Http\Livewire;
 
 use App\Models\Recipe as RecipeModel;
 use Livewire\Component;
@@ -20,7 +20,7 @@ class Recipe extends Component
     public function render()
     {
         $this->recipe->amount_of_people = $this->people;
-        return view('livewire.components.recipe', [
+        return view('livewire.recipe', [
             'recipe' => $this->recipe,
             'relatedRecipes' => $this->relatedRecipes
         ]);

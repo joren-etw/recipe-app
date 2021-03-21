@@ -2,7 +2,10 @@
     <div class="card" style="width: 100%;">
         <div class="card-body">
             <div class="card-title">
-                <h5 class="float-start">{{ $recipe->name }}</h5>
+                <div class="float-start">
+                    <h5>{{ $recipe->name }}</h5>
+                    <span class="badge bg-info">{{ $recipe->category->name }}</span>
+                </div>
                 <div class="form-group float-end">
                     <label for="search-recipe">Amount of people</label>
                     <input wire:model.debounce.300ms="people" type="text" class="form-control" id="search-recipe">
