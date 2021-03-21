@@ -28,6 +28,7 @@
                 <tr>
                     <th>No.</th>
                     <th>Name</th>
+                    <th>Category</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -36,6 +37,7 @@
                 <tr wire:key="{{time() . $recipe->id}}">
                     <td>{{ $recipe->id }}</td>
                     <td>{{ $recipe->name }}</td>
+                    <td>{{ $recipe->category->name }}</td>
                     <td>
                         <button wire:click="openRecipe({{ $recipe->id }})" class="btn btn-info btn-sm">View</button>
                     </td>

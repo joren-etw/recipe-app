@@ -11,9 +11,16 @@ class Recipe extends Model
 
     protected $appends = ['amount_of_people'];
 
+    protected $with = ['category'];
+
     public function ingredients()
     {
         return $this->hasMany(RecipeIngredient::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     /**
@@ -51,7 +58,7 @@ class Recipe extends Model
         });
     }
 
-    public function scopeCategory($query, ?int $categoryId)
+    public function scopeFilterByCategory($query, ?int $categoryId)
     {
         return $query->when($categoryId, static function ($query) use ($categoryId) {
             return $query->where('category_id', $categoryId);

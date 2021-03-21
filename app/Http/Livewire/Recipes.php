@@ -26,7 +26,7 @@ class Recipes extends Component
     {
         $categories = Category::all();
 
-        $recipes = Recipe::category($this->category)
+        $recipes = Recipe::filterByCategory($this->category)
             ->filter($this->search)
             ->paginate($this->perPage);
 
