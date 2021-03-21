@@ -7,7 +7,7 @@ use Phospr\Fraction;
 
 class CalculateFraction
 {
-    static function handle(string $fraction, int $multiplier)
+    static function handle(string $fraction, int $multiplier): string
     {
         Log::debug($fraction);
         // Check if value is indeed a fraction
