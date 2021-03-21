@@ -16,6 +16,12 @@ class Recipes extends Component
 
     public $search, $perPage = 10, $category;
 
+    protected $queryString = [
+        'perPage',
+        'search' => ['except' => ''],
+        'category' => ['except' => '']
+    ];
+
     public function render()
     {
         $categories = Category::all();
