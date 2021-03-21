@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Listeners\CalculateFraction;
 use App\Models\Recipe;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -14,14 +15,20 @@ class RecipeIngredientAmountOfPeopleTest extends TestCase
      *
      * @return void
      */
-    public function RecipeIngredientAmountOfPeopleTest()
+    public function testRecipeIngredientAmountOfPeople()
     {
-        $recipe = Recipe::inRandomOrder()->first();
-        $recipe->amount_of_people = random_int(2, 25);
+        // Assert values of 10 recipes
+        $recipes = Recipe::inRandomOrder()->limit(10)->get();
 
-        foreach ($recipe->ingredients as $ingredient) {
-            $expectedQuantity = $ingredient->quantity * $recipe->amount_of_people;
-            $this->assertTrue($ingredient->calculated_quantity === $expectedQuantity);
+        foreach ($recipes as $recipe) {
+            $amountOfPeople = random_int(2, 25);
+            // This handling is expected to trigger the calculated_quantity to be calculated
+            $recipe->amount_of_people = $amountOfPeople;
+
+            foreach ($recipe->ingredients as $ingredient) {
+                $expectedQuantity = CalculateFraction::handle($ingredient->quantity, $amountOfPeople);
+                $this->assertTrue($ingredient->calculated_quantity === $expectedQuantity);
+            }
         }
     }
 }
