@@ -25,6 +25,7 @@ class Recipes extends Component
     public function render()
     {
         $categories = Category::all();
+
         $recipes = Recipe::when($this->category, function ($query) {
             return $query->where('category_id', $this->category);
         })
@@ -37,5 +38,10 @@ class Recipes extends Component
             'recipes' => $recipes,
             'categories' => $categories
         ]);
+    }
+
+    public function openRecipe($recipeId)
+    {
+        return redirect()->to('/' . $recipeId);
     }
 }
