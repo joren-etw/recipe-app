@@ -12,18 +12,14 @@
         <ul class="list-group list-group-flush">
             @foreach($recipe->ingredients as $ingredient)
             <li class="list-group-item">
-                <span class="h5 float-start">
+                <span class="float-start">
                     {{ $ingredient->ingredient->name }}
                 </span>
-                <span class="h5 float-end">
+                <span class="float-end">
                     {{ $ingredient->calculated_quantity . ' ' . $ingredient->unit->name }}
                 </span>
             </li>
             @endforeach
         </ul>
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
     </div>
 </div>
