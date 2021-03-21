@@ -34,7 +34,7 @@
                                 {{ $relatedRecipe->name }}
                             </h5>
                             <span class="float-end">
-                                <button wire:click="openRecipe({{ $relatedRecipe->id }})" class="btn btn-info btn-sm">View</button>
+                                <button wire:click="openRecipe({{ $relatedRecipe->id }})" class="btn btn-info text-white btn-sm">View</button>
                             </span>
                         </div>
                     </div>

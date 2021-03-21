@@ -29,7 +29,9 @@
                     <th>No.</th>
                     <th>Name</th>
                     <th>Category</th>
-                    <th>Action</th>
+                    <th>
+                        <span class="float-end">Action</span>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -39,7 +41,7 @@
                     <td>{{ $recipe->name }}</td>
                     <td>{{ $recipe->category->name }}</td>
                     <td>
-                        <button wire:click="openRecipe({{ $recipe->id }})" class="btn btn-info btn-sm">View</button>
+                        <button wire:click="openRecipe({{ $recipe->id }})" class="btn btn-info text-white btn-sm float-end">View</button>
                     </td>
                 </tr>
                 @endforeach
