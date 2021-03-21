@@ -21,5 +21,23 @@
             </li>
             @endforeach
         </ul>
+        <div class="row">
+            @foreach($relatedRecipes as $relatedRecipe)
+            <div class="col-12 col-md-6">
+                <div class="card-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title float-start">
+                                {{ $relatedRecipe->name }}
+                            </h5>
+                            <span class="float-end">
+                                <button wire:click="openRecipe({{ $relatedRecipe->id }})" class="btn btn-info btn-sm">View</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
 </div>
