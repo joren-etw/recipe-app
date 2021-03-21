@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Listeners\FractionToDecimal;
 use App\Models\Ingredient;
 use App\Models\RecipeIngredient;
 use App\Models\Unit;
