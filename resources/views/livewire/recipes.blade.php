@@ -9,7 +9,7 @@
         <div class="col-12 col-md-4">
             <label for="search-recipe">Search category</label>
             <select wire:model="category" class="form-select" aria-label="Default select example">
-                <option>All categories</option>
+                <option value="0">All categories</option>
                 @foreach($categories as $category)
                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach

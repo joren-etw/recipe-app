@@ -19,19 +19,15 @@ class Recipes extends Component
     protected $queryString = [
         'perPage',
         'search' => ['except' => ''],
-        'category' => ['except' => '']
+        'category' => ['except' => '0']
     ];
 
     public function render()
     {
         $categories = Category::all();
 
-        $recipes = Recipe::when($this->category, function ($query) {
-            return $query->where('category_id', $this->category);
-        })
-            ->when($this->search, function ($query) {
-                return $query->where('name', 'like', '%' . $this->search . '%');
-            })
+        $recipes = Recipe::category($this->category)
+            ->filter($this->search)
             ->paginate($this->perPage);
 
         return view('livewire.recipes', [

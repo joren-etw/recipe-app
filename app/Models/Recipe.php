@@ -39,4 +39,22 @@ class Recipe extends Model
             $ingredient->setCalculatedQuantityAttribute($value);
         });
     }
+
+    public function scopeFilter($query, ?string $filter)
+    {
+        return $query->when($filter, static function ($query) use ($filter) {
+            return $query->where('name', 'like', '%' . $filter . '%')->orWhereHas('ingredients', function ($q) use ($filter) {
+                $q->whereHas('ingredient', function ($q) use ($filter) {
+                    $q->where('name', 'like', '%' . $filter . '%');
+                });
+            });
+        });
+    }
+
+    public function scopeCategory($query, ?int $categoryId)
+    {
+        return $query->when($categoryId, static function ($query) use ($categoryId) {
+            return $query->where('category_id', $categoryId);
+        });
+    }
 }
