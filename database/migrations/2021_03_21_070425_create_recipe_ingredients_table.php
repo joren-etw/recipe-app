@@ -18,7 +18,7 @@ class CreateRecipeIngredientsTable extends Migration
             $table->foreignId('recipe_id')->constrained();
             $table->foreignId('ingredient_id')->constrained();
             $table->foreignId('unit_id')->constrained(); // Added quantity here because this can change for some ingredients (tablespoons to cups, I like my dish salty)
-            $table->decimal('quantity', 8, 2);
+            $table->string('quantity');
             $table->timestamps();
         });
     }
