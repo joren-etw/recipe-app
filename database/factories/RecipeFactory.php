@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Category;
 use App\Models\Recipe;
+use App\Models\RecipeIngredient;
 use FakerRestaurant\Provider\en_US\Restaurant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -15,6 +16,22 @@ class RecipeFactory extends Factory
      * @var string
      */
     protected $model = Recipe::class;
+
+    /**
+     * Configure the model factory.
+     *
+     * @return $this
+     */
+    public function configure()
+    {
+        return $this->afterCreating(function (Recipe $recipe) {
+            RecipeIngredient::factory([
+                'recipe_id' => $recipe->id,
+            ])
+                ->count(random_int(1, 15))
+                ->create();
+        });
+    }
 
     /**
      * Define the model's default state.
