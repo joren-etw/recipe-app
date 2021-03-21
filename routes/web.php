@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Livewire\Components\Recipe;
+use App\Http\Livewire\Recipe;
 use App\Http\Livewire\Recipes;
 use Illuminate\Support\Facades\Route;
 
