@@ -2,7 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\recipe;
+use App\Models\Recipe;
+use FakerRestaurant\Provider\en_US\Restaurant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RecipeFactory extends Factory
@@ -12,7 +13,7 @@ class RecipeFactory extends Factory
      *
      * @var string
      */
-    protected $model = recipe::class;
+    protected $model = Recipe::class;
 
     /**
      * Define the model's default state.
@@ -21,8 +22,11 @@ class RecipeFactory extends Factory
      */
     public function definition()
     {
+        $this->faker->addProvider(new Restaurant($this->faker));
+
         return [
-            //
+            'name' => $this->faker->foodName(),
+            'category_id' => 1
         ];
     }
 }
