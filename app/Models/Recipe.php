@@ -36,7 +36,7 @@ class Recipe extends Model
         $this->attributes['amount_of_people'] = $value;
 
         $this->ingredients->map(static function ($ingredient) use ($value) {
-            $ingredient->setCalculatedQuantity($value);
+            $ingredient->setCalculatedQuantityAttribute($value);
         });
     }
 }
