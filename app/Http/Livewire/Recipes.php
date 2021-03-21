@@ -18,10 +18,18 @@ class Recipes extends Component
 
     public function render()
     {
-        $recipes = Recipe::paginate($this->perPage);
+        $categories = Category::all();
+        $recipes = Recipe::when($this->category, function ($query) {
+            return $query->where('category_id', $this->category);
+        })
+            ->when($this->search, function ($query) {
+                return $query->where('name', 'like', '%' . $this->search . '%');
+            })
+            ->paginate($this->perPage);
 
         return view('livewire.recipes', [
             'recipes' => $recipes,
+            'categories' => $categories
         ]);
     }
 }

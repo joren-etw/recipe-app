@@ -1,6 +1,21 @@
 <div>
     <div class="row">
         <div class="col-12 col-md-4">
+            <div class="form-group">
+                <label for="search-recipe">Search recipe</label>
+                <input wire:model.debounce.300ms="search" type="text" class="form-control" id="search-recipe">
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <label for="search-recipe">Search category</label>
+            <select wire:model="category" class="form-select" aria-label="Default select example">
+                <option>All categories</option>
+                @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-12 col-md-4">
             <label for="show-per-page">Per page</label>
             <select wire:model="perPage" class="form-select" id="show-per-page" aria-label="Default select example">
                 <option>10</option>
