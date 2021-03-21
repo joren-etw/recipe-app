@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\Components\Recipe;
+use App\Http\Livewire\Recipes;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'livewire.app');
+Route::get('/', Recipes::class);
+Route::get('/{id}', Recipe::class);

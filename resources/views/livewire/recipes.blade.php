@@ -37,7 +37,7 @@
                     <td>{{ $recipe->id }}</td>
                     <td>{{ $recipe->name }}</td>
                     <td>
-                        <button class="btn btn-info btn-sm">View</button>
+                        <button wire:click="openRecipe({{ $recipe->id }})" class="btn btn-info btn-sm">View</button>
                     </td>
                 </tr>
                 @endforeach
