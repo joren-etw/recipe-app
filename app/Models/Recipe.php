@@ -47,6 +47,14 @@ class Recipe extends Model
         });
     }
 
+    /**
+     * Filters model on name and ingredient
+     *
+     * @param mixed $query
+     * @param string|null $filter
+     *
+     * @return [type]
+     */
     public function scopeFilter($query, ?string $filter)
     {
         return $query->when($filter, static function ($query) use ($filter) {
@@ -58,6 +66,14 @@ class Recipe extends Model
         });
     }
 
+    /**
+     * Filters model on category_id
+     *
+     * @param mixed $query
+     * @param int|null $categoryId
+     *
+     * @return [type]
+     */
     public function scopeFilterByCategory($query, ?int $categoryId)
     {
         return $query->when($categoryId, static function ($query) use ($categoryId) {
