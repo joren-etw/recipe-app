@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Listeners\FractionToDecimal;
 use App\Models\Ingredient;
 use App\Models\RecipeIngredient;
 use App\Models\Unit;
@@ -25,7 +26,7 @@ class RecipeIngredientFactory extends Factory
     {
         $ingredient = Ingredient::firstOrCreate(['name' => $this->faker->ingredient]);
         $measurement = explode(' ', $this->faker->measurement, 2);
-        $quantity = $measurement[0];
+        $quantity = FractionToDecimal::handle($measurement[0]);
         $unit = $measurement[1];
 
         return [
