@@ -26,7 +26,7 @@ class RecipeIngredientFactory extends Factory
     {
         $ingredient = Ingredient::firstOrCreate(['name' => $this->faker->ingredient]);
         $measurement = explode(' ', $this->faker->measurement, 2);
-        $quantity = FractionToDecimal::handle($measurement[0]);
+        $quantity = $measurement[0];
         $unit = $measurement[1];
 
         return [
