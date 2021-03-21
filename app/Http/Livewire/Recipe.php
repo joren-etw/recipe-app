@@ -20,6 +20,7 @@ class Recipe extends Component
     public function render()
     {
         $this->recipe->amount_of_people = $this->people;
+
         return view('livewire.recipe', [
             'recipe' => $this->recipe,
             'relatedRecipes' => $this->relatedRecipes
