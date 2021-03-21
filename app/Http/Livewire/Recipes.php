@@ -12,7 +12,7 @@ class Recipes extends Component
 
     public function render()
     {
-        // $this->recipes = Recipe::all();
+        $this->recipes = Recipe::all();
         // $this->categories = Category::all();
         return view('livewire.recipes');
     }

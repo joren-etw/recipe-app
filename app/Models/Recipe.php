@@ -17,11 +17,19 @@ class Recipe extends Model
     }
 
     /**
+     * Default amount of people is 2
+     *
+     * @return int
+     */
+    public function getAmountOfPeopleAttribute(): int
+    {
+        return 2;
+    }
+
+    /**
      * Set the amount of people for this model, this will modify the quantities returned
      *
      * @param mixed $value
-     *
-     * @return [type]
      */
     public function setAmountOfPeopleAttribute($value)
     {
