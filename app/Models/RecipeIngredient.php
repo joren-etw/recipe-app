@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Listeners\CalculateFraction;
+use App\Listeners\CalculateUnitForXPeople;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,6 +31,6 @@ class RecipeIngredient extends Model
      */
     public function setCalculatedQuantityAttribute($amountOfPeople)
     {
-        $this->attributes['calculated_quantity'] = CalculateFraction::handle($this->quantity, $amountOfPeople);
+        $this->attributes['calculated_quantity'] = CalculateUnitForXPeople::handle($this->quantity, $amountOfPeople);
     }
 }

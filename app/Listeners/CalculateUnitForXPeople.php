@@ -5,7 +5,7 @@ namespace App\Listeners;
 use Illuminate\Support\Facades\Log;
 use Phospr\Fraction;
 
-class CalculateFraction
+class CalculateUnitForXPeople
 {
     /**
      * Will multiply given fraction with given multiplier. If fraction is not really a fraction it will be handled as a regular calculation
@@ -15,15 +15,14 @@ class CalculateFraction
      *
      * @return string
      */
-    static function handle(string $fraction, int $multiplier): string
+    static function handle(string $quantity, int $multiplier): string
     {
-        Log::debug($fraction);
-        // Check if value is indeed a fraction
-        if (strpos($fraction, '/') === false) {
-            return $fraction * $multiplier;
+        // Check if value is a fraction
+        if (strpos($quantity, '/') === false) {
+            return $quantity * $multiplier;
         }
 
-        $fraction = new Fraction(...array_map('intval', explode('/', $fraction)));
+        $fraction = new Fraction(...array_map('intval', explode('/', $quantity)));
 
         if ($fraction->isInteger()) {
             return $fraction * $multiplier;

@@ -44,7 +44,10 @@ class RecipeFactory extends Factory
 
         return [
             'name' => $this->faker->foodName(),
-            'category_id' => Category::inRandomOrder()->first()->id
+            'category_id' => Category::inRandomOrder()->first()->id,
+            'recipe_description' => $this->faker->text(),
+            'active' => (random_int(0, 100) < 90),
+            'minutes' => ceil(random_int(0, 60) / 5) * 5
         ];
     }
 }

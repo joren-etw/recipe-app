@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Listeners\CalculateFraction;
+use App\Listeners\CalculateUnitForXPeople;
 use App\Models\Recipe;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -26,7 +26,7 @@ class RecipeIngredientAmountOfPeopleTest extends TestCase
             $recipe->amount_of_people = $amountOfPeople;
 
             foreach ($recipe->ingredients as $ingredient) {
-                $expectedQuantity = CalculateFraction::handle($ingredient->quantity, $amountOfPeople);
+                $expectedQuantity = CalculateUnitForXPeople::handle($ingredient->quantity, $amountOfPeople);
                 $this->assertTrue($ingredient->calculated_quantity === $expectedQuantity);
             }
         }
