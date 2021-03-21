@@ -4,16 +4,24 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use App\Models\Recipe;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Recipes extends Component
 {
-    public $recipes, $description, $categoryId, $page;
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+
+    public $search, $perPage = 10, $category;
 
     public function render()
     {
-        $this->recipes = Recipe::all();
-        // $this->categories = Category::all();
-        return view('livewire.recipes');
+        $recipes = Recipe::paginate($this->perPage);
+
+        return view('livewire.recipes', [
+            'recipes' => $recipes,
+        ]);
     }
 }
