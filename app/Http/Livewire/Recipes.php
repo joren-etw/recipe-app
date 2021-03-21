@@ -28,6 +28,7 @@ class Recipes extends Component
 
         $recipes = Recipe::filterByCategory($this->category)
             ->filter($this->search)
+            ->isActive()
             ->paginate($this->perPage);
 
         return view('livewire.recipes', [

@@ -12,13 +12,16 @@ class Recipe extends Component
 
     public function mount($id)
     {
-        $this->recipe = RecipeModel::find($id);
+        $this->recipe = RecipeModel::isActive()->where('id', '=', $id)->first();
+        if (!$this->recipe) return;
         $this->relatedRecipes = RecipeModel::where('id', '<>', $id)->where('category_id', $this->recipe->category_id)->limit(4)->get();
     }
 
 
     public function render()
     {
+        if (!$this->recipe) return view('layouts.404');
+
         $this->recipe->amount_of_people = $this->people;
 
         return view('livewire.recipe', [

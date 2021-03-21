@@ -47,6 +47,11 @@ class Recipe extends Model
         });
     }
 
+    public function scopeIsActive($query)
+    {
+        return $query->where('active', true);
+    }
+
     /**
      * Filters model on name and ingredient
      *
