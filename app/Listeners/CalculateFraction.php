@@ -7,6 +7,14 @@ use Phospr\Fraction;
 
 class CalculateFraction
 {
+    /**
+     * Will multiply given fraction with given multiplier. If fraction is not really a fraction it will be handled as a regular calculation
+     *
+     * @param string $fraction
+     * @param int $multiplier
+     *
+     * @return string
+     */
     static function handle(string $fraction, int $multiplier): string
     {
         Log::debug($fraction);
